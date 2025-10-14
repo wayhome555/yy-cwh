@@ -34,7 +34,8 @@ class Solution:
         #如果最终结果还是amount+1，说明无法找到组成该金额
         return dp[amount] if dp[amount]<=amount else -1
     
-    class Solution:
+
+    #不同方法
     def a(self, coins: List[int], amount: int) -> int:
         # 初始化
         dp = [amount + 1]*(amount + 1)
