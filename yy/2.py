@@ -16,20 +16,6 @@
 '''
 # 动态规划
 import math
-class Solution:
-    def numSquares(self, n: int) -> int:
-        if n==0:
-            return 0
-        dp=[float('inf')]*(n+1)
-        dp[0]=0
-        cands=[i**2 for i in range(1,int(sqrt(n)+1))]
-        for i in range(1,n+1):
-            for cand in cands:
-                dp[i]=min(dp[i],dp[i-cand]+1)
-        return dp[n]
-
-'''
-import math
 
 class Solution:
     def numSquares(self, n: int) -> int:
@@ -45,6 +31,33 @@ class Solution:
                 dp[j] = min(dp[j], dp[j - square] + 1)
         
         return dp[n]
-'''
-
+    
+    #不同方法
+    def a(self, n: int) -> int:
+        if n==0:
+            return 0
+        dp=[float('inf')]*(n+1)
+        dp[0]=0
+        cands=[i**2 for i in range(1,int(sqrt(n)+1))]
+        for i in range(1,n+1):
+            for cand in cands:
+                dp[i]=min(dp[i],dp[i-cand]+1)
+        return dp[n]
+    
+    
+    # 广度优先搜索(BFS)
+    def b(self, n: int) -> int:
+        from collections import deque
+        deq=deque()
+        visited=set()
         
+        deq.append((n,0))
+        while deq:
+            number,step=deq.popleft()
+            targets=[number-i*i for i in range(1,int(number**0.5)+1)]
+            for target in targets:
+                if target==0:return step+1
+                if target not in visited:
+                    deq.append((target,step+1))
+                    visited.add(target)
+        return 0
