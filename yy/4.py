@@ -55,7 +55,7 @@ class Solution:
     def a(self, nums, left, mid, right):
         # 一定包含 nums[mid] 元素的最大连续子数组的和，
         # 思路是看看左边"扩散到底"，得到一个最大数，右边"扩散到底"得到一个最大数
-        # 然后再加上中间数
+        # 然后再加上中间数,中间数必须包含
         left_sum_max = 0
         start_left = mid - 1
         s1 = 0
