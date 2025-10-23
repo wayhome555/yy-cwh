@@ -51,4 +51,4 @@ class Solution:
                 stack.pop()
             else:
                 stack.append(ch)
-        return len
+        return len(stack)==0
