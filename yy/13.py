@@ -23,8 +23,7 @@ class Solution:
         for num in nums:
             current=max(prev,prev2+num)
             prev2,prev=prev,current#为下一个房屋做准备
-            #prev会变成下一个房屋的前两个屋，current会编程下一个房屋的前一个屋
+            #prev会变成下一个房屋的前两个房屋，current会编程下一个房屋的前一个房屋
         return current
         
 
-        
