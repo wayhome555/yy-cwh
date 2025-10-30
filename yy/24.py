@@ -34,7 +34,7 @@ class Solution:
             if i+1 != nums[i]:
                 return i+1
         return size+1
-    #交换函数，用来交换数组中的两个元素，下标为i和下标为nums[i]-1的元素，
+    #交换函数，用来交换数组中的两个元素，下标为i和下标为nums[i]-1的元素， git/github
     #例如将1映射到下标0，将2映射到下标1，以此类推。
     def __swap(self,nums,index1,index2):
         nums[index1],nums[index2]=nums[index2],nums[index1]
