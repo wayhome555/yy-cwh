@@ -43,7 +43,7 @@ class Solution:
 from typing import List
 
 class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
+    def c(self, nums: List[int]) -> int:
         min_val = 1  # 元素取值的最小值（题目规定是1）
         max_val = len(nums) - 1  # 元素取值的最大值（n = len(nums)-1
 
@@ -62,5 +62,26 @@ class Solution:
         
         # 最终 min_val == max_val，就是重复元素
         return min_val
+    
+#方法4（快慢指针）（Floyd 判环算法）最优解法
+#原因：重复元素会导致「链表出现环」（因为重复元素会被多次指向，形成循环）
+# 快慢指针：将数组视为链表，每个元素 nums[i] 指向 nums[nums[i]]
+# 重复元素就是链表中环的入口
+    def d(self, nums: List[int]) -> int:
+        slow = 0
+        fast = 0
+        while True:
+            # fast 前进两次，slow 前进一次
+            fast = nums[fast]
+            fast = nums[fast]
+            slow = nums[slow]
+            if slow == fast:
+                break
+        # ptr == slow 时说明检测到重复元素，两个重复元素同时指向环的入口。
+        ptr = 0
+        while ptr != slow:
+            ptr = nums[ptr]
+            slow = nums[slow]
+        return ptr
 
 
