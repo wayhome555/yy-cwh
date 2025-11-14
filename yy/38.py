@@ -20,6 +20,8 @@
 解释: t 中两个字符 'a' 均应包含在 s 的子串中，
 因此没有符合条件的子字符串，返回空字符串。'''
 
+# 滑动窗口（双指针）+ 哈希计数
+from collections import Counter
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         cnt_s=Counter() #s子串字母出现次数
@@ -28,7 +30,7 @@ class Solution:
         left=0
         for right, c in enumerate(s):  # 移动子串右端点
             cnt_s[c] += 1  # 右端点字母移入子串
-            while cnt_s >= cnt_t:  # 涵盖
+            while cnt_s >= cnt_t:  # 涵盖，且子串内字母出现次数 >= t 中的字母出现次数
                 if right - left < ans_right - ans_left:  # 找到更短的子串
                     ans_left, ans_right = left, right  # 记录此时的左右端点
                 cnt_s[s[left]] -= 1  # 左端点字母移出子串
