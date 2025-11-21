@@ -38,7 +38,7 @@ class Solution:
         return "" if ans_left < 0 else s[ans_left: ans_right + 1]
 
 
-#优化，用一个变量 less 记录子串内有多少种字母的出现次数 < t 中的字母出现次数，
+#优化，用一个变量 less 记录子串内有多少种字母的出现次数 < t 中的字母出现次数
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         cnt = defaultdict(int)  # 比 Counter 更快
